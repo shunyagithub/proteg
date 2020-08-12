@@ -381,7 +381,7 @@ header .wrapper .menu ul li:not(:last-child) {
 }
 
 .back {
-  background: url(./img/SVG/back10.svg) no-repeat;
+  background: url(../img/SVG/back10.svg) no-repeat;
   background-size: cover;
   width: 100%;
   height: 700px;
@@ -644,7 +644,7 @@ header .wrapper .menu ul li:not(:last-child) {
 }
 
 .b4 .b4-1 .btn-arrow:before {
-  content: url(./img/SVG/arrow0.svg);
+  content: url(../img/SVG/arrow0.svg);
   display: inline-block;
   padding-right: 30px;
   width: 80px;
@@ -798,7 +798,7 @@ header .wrapper .menu ul li:not(:last-child) {
 }
 
 .b5 .b5-2 .btn-arrow:after {
-  content: url(./img/SVG/arrow0.svg);
+  content: url(../img/SVG/arrow0.svg);
   display: inline-block;
   padding-right: 30px;
   -webkit-transform: rotate(180deg);
@@ -976,7 +976,7 @@ header .wrapper .menu ul li:not(:last-child) {
 }
 
 .plans .btn-arrow:after {
-  content: url(./img/SVG/arrow0.svg);
+  content: url(../img/SVG/arrow0.svg);
   display: inline-block;
   padding-right: 30px;
   -webkit-transform: rotate(180deg);
@@ -990,7 +990,7 @@ header .wrapper .menu ul li:not(:last-child) {
 }
 
 footer {
-  background: url(./img/SVG/back20.svg) no-repeat;
+  background: url(../img/SVG/back20.svg) no-repeat;
   background-size: cover;
   width: 100%;
   height: 900px;

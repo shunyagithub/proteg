@@ -472,7 +472,7 @@ header {
 }
 
 .back {
-    background: url(./img/SVG/back10.svg) no-repeat;
+    background: url(../img/SVG/back10.svg) no-repeat;
     background-size: cover;
 
     width: 100%;
@@ -735,7 +735,7 @@ header {
 
 
             &:before {
-                content: url(./img/SVG/arrow0.svg);
+                content: url(../img/SVG/arrow0.svg);
                 display: inline-block;
                 padding-right: 30px;
 
@@ -874,7 +874,7 @@ header {
             }
 
             &:after {
-                content: url(./img/SVG/arrow0.svg);
+                content: url(../img/SVG/arrow0.svg);
                 display: inline-block;
                 padding-right: 30px;
                 transform: rotate(180deg);
@@ -1037,7 +1037,7 @@ header {
         }
 
         &:after {
-            content: url(./img/SVG/arrow0.svg);
+            content: url(../img/SVG/arrow0.svg);
             display: inline-block;
             padding-right: 30px;
             transform: rotate(180deg);
@@ -1058,7 +1058,7 @@ header {
 }
 
 footer {
-    background: url(./img/SVG/back20.svg)no-repeat;
+    background: url(../img/SVG/back20.svg)no-repeat;
     background-size: cover;
     width: 100%;
     height: 900px;
