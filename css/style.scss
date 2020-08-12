@@ -1,0 +1,1282 @@
+$green1: #29B574;
+$green2: #00A79C;
+$green3: #55D0C8;
+$green4: #BCE1D4;
+
+$white: #fff;
+$black: #121212;
+
+$pc: 1024px;
+$tab: 600px;
+$sp: 599px;
+
+@mixin tab {
+    @media screen and (min-width:($tab)) and (max-width:($pc)) {
+        @content;
+    }
+}
+
+@mixin sp {
+    @media screen and (max-width:($sp)) {
+        @content;
+    }
+}
+
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    color: $black;
+    font-family: fot-tsukuardgothic-std, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    width: 100%;
+}
+
+
+
+.wrapper {
+    max-width: 1080px;
+    margin: 0 auto;
+
+    @include tab {
+        max-width: 600px;
+    }
+
+
+
+    @include sp {
+        max-width: 95%;
+    }
+
+
+
+
+}
+
+h1 {
+    font-size: 50px;
+
+    @include tab {
+        font-size: 35px;
+    }
+
+    @include sp {
+        font-size: 25px;
+    }
+}
+
+h2 {
+    font-size: 35px;
+
+    @include tab {
+        font-size: 20px;
+    }
+
+    @include sp {
+        font-size: 25px;
+    }
+}
+
+h3 {
+    font-size: 25px;
+
+    @include tab {
+        font-size: 18px;
+    }
+
+    @include sp {
+        font-size: 20px;
+    }
+}
+
+h4 {
+    font-size: 22px;
+
+    @include tab {
+        font-size: 15px;
+    }
+}
+
+p {
+    @include tab {
+        font-size: 12px;
+    }
+}
+
+li,
+a,
+button {
+    color: $black;
+    text-decoration: none;
+    list-style-type: none;
+    font-size: 18px;
+
+    @include tab {
+        font-size: 15px;
+    }
+}
+
+.btn {
+    width: 230px;
+
+    background: $green1;
+    border-radius: 50px;
+
+    text-align: center;
+    padding: 10px 0;
+
+    transition: all 0.3s ease;
+
+    a {
+
+        color: $white;
+
+
+    }
+
+    &:hover {
+        background: $green2;
+        transform: translateY(-5px);
+    }
+}
+
+
+
+
+header {
+
+    .wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        padding: 30px 0;
+
+        .logo {
+            cursor: pointer;
+            width: 220px;
+
+
+            overflow: hidden;
+
+            @include tab {
+                width: 120px;
+            }
+        }
+
+        .menu {
+
+            @include sp {
+                display: none;
+            }
+
+            ul {
+                // overflow: hidden;
+
+
+                li {
+                    list-style-type: none;
+                    display: inline-block;
+                    // overflow: hidden;
+
+
+
+                    a {
+                        transition: 0.5s;
+                        position: relative;
+
+
+
+
+                    }
+
+
+
+
+
+                }
+
+                li:not(:last-child) {
+                    padding-right: 25px;
+
+
+                    // &::after {
+                    //     position: absolute;
+                    //     content: "";
+                    //     top: 130%;
+                    //     left: 0;
+                    //     width: 100%;
+                    //     height: 3px;
+                    //     background: $green3;
+                    //     transform: scaleX(0);
+                    //     transform-origin: right;
+                    //     transition: transform 0.5s;
+
+
+                    // }
+
+                    // &:hover {
+                    //     color: $green2;
+
+                    // }
+
+                    // &:hover::after {
+                    //     transform: scaleX(1);
+                    //     transform-origin: left;
+                    // }
+
+                    @include tab {
+                        padding-right: 15px;
+                    }
+
+
+
+                }
+            }
+        }
+
+    }
+
+}
+
+
+
+
+//-----  nav for sp ------//
+
+#nav-drawer {
+    display: none;
+}
+
+@include sp {
+    #nav-drawer {
+        display: block;
+    }
+
+
+    #nav-drawer {
+        position: relative;
+    }
+
+
+    .nav-unshown {
+        display: none;
+    }
+
+
+    #nav-open {
+        display: inline-block;
+        width: 30px;
+        height: 22px;
+        vertical-align: middle;
+    }
+
+    #nav-open span,
+    #nav-open span:before,
+    #nav-open span:after {
+        position: absolute;
+        height: 3px;
+
+        width: 25px;
+
+        border-radius: 3px;
+        background: $green1;
+        display: block;
+        content: '';
+        cursor: pointer;
+    }
+
+    #nav-open span:before {
+        bottom: -8px;
+    }
+
+    #nav-open span:after {
+        bottom: -16px;
+    }
+
+
+    #nav-close {
+        display: none;
+
+        position: fixed;
+        z-index: 99;
+        top: 0;
+
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: $green4;
+        opacity: 0;
+        transition: .5s ease-in-out;
+    }
+
+    /*中身*/
+    #nav-content {
+        overflow: auto;
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 9999;
+
+        width: 90%;
+
+        max-width: 330px;
+
+        height: 100%;
+        background: #fff;
+
+        transition: .3s ease-in-out;
+
+        -webkit-transform: translateX(105%);
+        transform: translateX(105%);
+
+
+        ul {
+            margin-top: 20px;
+            margin-left: 20px;
+        }
+    }
+
+
+    #nav-input:checked~#nav-close {
+        display: block;
+
+        opacity: .5;
+    }
+
+    #nav-input:checked~#nav-content {
+        -webkit-transform: translateX(0%);
+        transform: translateX(0%);
+
+        box-shadow: 6px 0 25px rgba(0, 0, 0, .15);
+    }
+
+}
+
+
+
+
+
+//------nav ------//
+
+
+
+
+
+
+.b1 {
+    display: flex;
+    justify-content: space-between;
+
+    @include tab {
+        position: relative;
+        height: 350px;
+
+    }
+
+    @include sp {
+        flex-direction: column
+    }
+
+
+    .b1-1 {
+
+        @include tab {
+            position: absolute;
+            z-index: 10;
+
+        }
+
+        @include sp {
+            order: 2;
+            text-align: center;
+        }
+
+        h2 {
+            margin-top: 150px;
+
+            @include sp {
+                margin-top: 0;
+            }
+        }
+
+        h3 {
+            color: $green1;
+            display: inline-block;
+            border-bottom: solid 3px $green1;
+
+            margin-top: 20px;
+
+            @include sp {
+                margin-bottom: 30px;
+
+            }
+
+        }
+
+        .btn {
+            margin-top: 100px;
+
+            @include sp {
+                margin-top: 30px;
+
+                margin: 0 auto;
+            }
+        }
+
+
+    }
+
+    .b1-2 {
+        margin-top: 50px;
+
+        @include tab {
+            margin-top: 0;
+            position: absolute;
+            right: -50px;
+        }
+
+        @include sp {
+            order: 1;
+        }
+
+        #mainArt {
+
+            width: 600px;
+            height: auto;
+
+            @include tab {
+                width: 400px;
+            }
+
+            @include sp {
+                width: 100%;
+                margin: 0 auto;
+            }
+
+
+
+        }
+
+
+    }
+
+
+}
+
+.back {
+    background: url(../img/SVG/back10.svg) no-repeat;
+    background-size: cover;
+
+    width: 100%;
+    height: 700px;
+
+    position: relative;
+
+    .b2 {
+
+        position: absolute;
+        top: 250px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        text-align: center;
+
+        @include sp {
+            top: 300px;
+        }
+
+        h3,
+        h2 {
+            color: $white;
+        }
+
+        h3 {
+            @include sp {
+                font-size: 18px;
+            }
+        }
+
+        h2 {
+
+            display: inline-block;
+            border-bottom: solid 3px $white;
+
+
+            @include sp {
+                margin-top: 30px;
+                font-size: 14px;
+            }
+        }
+
+        .subscribe {
+            $inputHeight: 60px;
+            width: 560px;
+            margin: 0 auto;
+            margin-top: 30px;
+            font-size: 20px;
+
+            @include sp {
+                width: 100%;
+            }
+
+            form {
+                position: relative;
+                display: block;
+                height: $inputHeight;
+                border-radius: 0.5*$inputHeight;
+                background: white;
+                margin: 0 auto;
+
+                overflow: hidden;
+
+
+                input {
+                    line-height: $inputHeight;
+                    padding: 0;
+                    border: none;
+                    outline: none;
+                    font-size: 1rem;
+                    font-weight: 300;
+                    background: $white;
+                    letter-spacing: 0.02em;
+
+                    transition: all 0.5s ease;
+
+                    &:not([type=submit]) {
+                        width: 100%;
+                        display: block;
+                        padding: 0 150px 0 30px;
+                    }
+
+                    &:not([type=email]) {
+                        position: absolute;
+                        height: $inputHeight - 20px;
+                        line-height: $inputHeight - 20px;
+                        top: 10px;
+                        right: 10px;
+                        border-radius: 0.5*($inputHeight - 20px);
+                        padding: 0 25px;
+                        background: $green1;
+                        color: white;
+                        cursor: pointer;
+
+                        &:hover {
+                            background: $green2;
+                        }
+                    }
+
+                    &:focus {
+                        outline: none;
+                        background: white;
+                    }
+                }
+            }
+        }
+
+
+    }
+}
+
+
+
+.b3 {
+
+    margin-top: 100px;
+
+    h1 {
+        text-align: center;
+    }
+
+    span {
+        color: $green1;
+    }
+
+    .why {
+        margin-top: 90px;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 100px;
+        flex-wrap: wrap;
+
+        @include sp {
+
+
+            display: block;
+
+            div {
+                width: 74%;
+                margin: 0 auto;
+            }
+        }
+
+
+        .box {
+            position: relative;
+            text-align: center;
+            width: 27%;
+
+
+
+            @include tab {
+                width: 33%;
+            }
+
+
+
+            .num {
+                position: absolute;
+                top: 0;
+                left: 0;
+                color: $green2;
+                font-size: 30px;
+
+
+
+            }
+
+
+
+            img {
+                margin: 70px 0 50px 0;
+                width: 80px;
+                height: 80px;
+
+                @include sp {
+
+                    margin: 0 auto;
+                }
+            }
+
+            h4 {
+                display: inline-block;
+                border-bottom: 3px solid $green1;
+            }
+
+            p {
+                margin-top: 30px;
+            }
+        }
+    }
+
+    .btn {
+
+        margin: 0 auto;
+    }
+
+
+}
+
+.b4 {
+    margin-top: 180px;
+    display: flex;
+    justify-content: space-between;
+
+    @include sp {
+        flex-direction: column;
+    }
+
+    .b4-1 {
+        width: 40%;
+        word-wrap: break-word;
+
+
+        @include tab {
+            width: 40%;
+        }
+
+        @include sp {
+            order: 2;
+            width: 100%;
+            margin-top: 50px;
+        }
+
+
+        h2 {
+            line-height: 1.5;
+
+
+            span {
+                color: $green1;
+            }
+        }
+
+
+
+        p {
+            padding-top: 48px;
+
+
+        }
+
+        >.btn-arrow {
+            white-space: nowrap;
+        }
+
+        .btn-arrow {
+            margin-top: 100px;
+            transition: all 0.5s ease;
+
+            @include sp {
+                margin-top: 50px;
+            }
+
+            a {
+                color: $green1;
+                font-size: 16px;
+            }
+
+
+            &:before {
+                content: url(/img/SVG/arrow0.svg);
+                display: inline-block;
+                padding-right: 30px;
+
+                width: 80px;
+                height: 25px;
+
+
+
+            }
+
+            &:hover {
+                transform: translateX(-20px);
+
+            }
+        }
+    }
+
+    .b4-2 {
+        width: 50%;
+        position: relative;
+
+        #webImg {
+
+            filter: drop-shadow(0px 10px 20px #17171712);
+            width: 100%;
+        }
+
+        @include tab {
+            width: 50%;
+
+        }
+
+        @include sp {
+
+            width: 100%;
+
+        }
+
+        @include sp {
+            order: 1;
+            width: 70%;
+            margin: 0 auto;
+        }
+
+        #mailImg {
+            position: absolute;
+            width: 215px;
+            top: 50%;
+            left: -20%;
+            filter: drop-shadow(0px 10px 20px #17171712);
+            z-index: 10;
+
+
+            @include tab {
+                top: 40%;
+                width: 180px;
+            }
+
+            @include sp {
+                top: 40%;
+                right: 0%;
+                width: 50%;
+
+            }
+        }
+    }
+}
+
+.b5 {
+
+    margin-top: 180px;
+    display: flex;
+    justify-content: space-between;
+
+    @include sp {
+        flex-direction: column;
+        margin-top: 100px;
+    }
+
+    .b5-1 {
+        width: 50%;
+
+        @include sp {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+
+        #phoneImg {
+            width: 90%;
+            filter: drop-shadow(0px 10px 20px #17171712);
+            margin-bottom: 60px;
+        }
+    }
+
+    .b5-2 {
+        width: 40%;
+
+        @include sp {
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        h2 {
+            line-height: 1.5;
+
+
+            span {
+                color: $green1;
+            }
+        }
+
+        p {
+            padding-top: 48px;
+
+        }
+
+        >.btn-arrow {
+            white-space: nowrap;
+        }
+
+        .btn-arrow {
+            margin-top: 100px;
+            transition: all 0.5s ease;
+
+            @include sp {
+                margin-top: 50px;
+                float: right;
+            }
+
+            a {
+                color: $green1;
+                font-size: 16px;
+
+
+            }
+
+            &:after {
+                content: url(/img/SVG/arrow0.svg);
+                display: inline-block;
+                padding-right: 30px;
+                transform: rotate(180deg);
+                width: 80px;
+
+
+
+
+            }
+
+            &:hover {
+                transform: translateX(20px);
+
+            }
+        }
+
+    }
+}
+
+.plans {
+
+    overflow: visible;
+
+    h1 {
+        text-align: center;
+        margin: 100px 0;
+
+        &:before {
+            content: "料金プラン";
+            display: block;
+            color: $green1;
+            font-size: 18px;
+            margin-bottom: -25px;
+
+            @include sp {
+                margin-bottom: -10px;
+                // width: 100%;
+            }
+        }
+    }
+
+    .plan {
+        display: flex;
+        justify-content: space-between;
+
+        @include sp {
+            // display: block;
+            width: 100%;
+
+        }
+
+    }
+
+    .plan1,
+    .plan2,
+    .plan3 {
+        position: relative;
+
+        @include tab {
+            img {
+                width: 190px;
+                height: auto;
+            }
+        }
+
+        @include sp {
+            margin: 0px;
+
+            img {
+                width: 80%;
+                margin: 0 auto;
+            }
+
+        }
+
+        .btn {
+            position: absolute;
+            bottom: 30px;
+            left: 60px;
+
+            @include tab {
+                width: 70%;
+                height: 30px;
+                font-size: 18px;
+
+                bottom: 25px;
+                left: 0;
+                right: 0;
+                margin: auto;
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                a {
+                    text-align: center;
+                }
+            }
+
+            @include sp {
+                width: 60%;
+                height: 40px;
+                font-size: 18px;
+
+                bottom: 25px;
+                left: 0;
+                right: 0;
+                margin: auto;
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                a {
+                    text-align: center;
+                }
+
+            }
+
+
+        }
+
+
+
+
+    }
+
+    .plan1,
+    .plan3 {
+        margin-top: 100px;
+
+        @include sp {
+            margin-top: 0px;
+        }
+    }
+
+    .plan2 {
+        .btn {
+            bottom: 130px;
+
+            @include sp {
+                bottom: 30px;
+            }
+        }
+
+
+
+
+    }
+
+
+    .btn-arrow {
+        margin-top: 50px;
+        transition: all 0.5s ease;
+
+
+        a {
+            color: $green1;
+            font-size: 16px;
+        }
+
+        &:after {
+            content: url(/img/SVG/arrow0.svg);
+            display: inline-block;
+            padding-right: 30px;
+            transform: rotate(180deg);
+
+            width: 80px;
+
+
+
+
+        }
+
+        &:hover {
+            transform: translateX(20px);
+
+        }
+    }
+
+}
+
+footer {
+    background: url(/img/SVG/back20.svg)no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 900px;
+
+    color: $white;
+
+    @include tab {
+        height: 700px;
+
+    }
+
+    @include sp {
+        height: 950px;
+    }
+
+
+
+
+
+    .wrapper {
+
+        padding-top: 1px;
+        height: auto;
+
+        .box1 {
+
+            width: 100%;
+
+            text-align: center;
+
+            .inner {
+                width: 30%;
+
+                margin-top: 300px;
+                margin-left: auto;
+                margin-bottom: 100px;
+                margin-top: 150px;
+
+                @include tab {
+                    margin-bottom: 20px;
+                }
+
+                @include sp {
+                    width: 100%;
+                    margin: 230px auto 20px;
+                }
+
+
+                .logo2 {
+
+                    img {
+                        width: 240px;
+
+                        @include tab {
+                            width: 150px;
+                        }
+                    }
+
+                }
+
+                ul {
+
+                    margin: 0 auto;
+                    display: flex;
+                    justify-content: space-around;
+
+                    li {
+                        list-style-type: none;
+
+                        a {
+                            font-size: 35px;
+                            color: $white;
+                        }
+
+                    }
+                }
+            }
+
+
+        }
+
+        .inner2 {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+
+            @include sp {
+                flex-direction: column;
+
+            }
+
+            .box2 {
+
+                display: flex;
+                justify-content: space-between;
+                width: 800px;
+
+                @include tab {
+                    width: 400px;
+                }
+
+                @include sp {
+                    width: 80%;
+                    margin: 0 auto;
+                }
+
+
+
+
+
+                ul {
+
+
+                    li {
+                        list-style-type: none;
+
+                        a {
+                            color: $white;
+                            font-size: 13px;
+                        }
+
+                        .non {
+                            @include sp {
+                                display: none;
+                            }
+                        }
+
+
+
+                    }
+
+                    .space {
+                        margin-top: 80px;
+
+                        @include tab {
+                            margin-top: 55px;
+
+                        }
+                    }
+                }
+            }
+
+            .box3 {
+                position: absolute;
+                bottom: 0;
+                right: 0;
+
+                @include tab {
+                    bottom: 7%;
+
+                }
+
+                @include sp {
+
+                    position: static;
+                    margin: 0 auto;
+
+                }
+
+                .btn-footer {
+                    width: 230px;
+
+                    background: $white;
+                    border-radius: 50px;
+
+                    text-align: center;
+                    padding: 10px 0;
+
+                    transition: all 0.3s ease;
+
+                    @include tab {
+                        width: 150px;
+                        padding: 5px 0;
+
+                    }
+
+                    @include sp {
+                        margin-top: 50px;
+                    }
+
+                    a {
+                        color: $green1;
+                    }
+
+                    &:hover {
+                        background: $green4;
+                        transform: translateY(-5px);
+                    }
+                }
+
+                .btn-footer:not(:first-child) {
+                    margin-top: 30px;
+
+                    @include tab {
+                        margin-top: 10px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+// SLCIK
+
+.slick-prev:before,
+.slick-next:before {
+    color: $green1;
+}
+
+.slick-next {
+    right: 0;
+}
+
+.slick-prev {
+    left: 0;
+}
+
+.slick-dots li.slick-active button:before {
+    color: $green1;
+}
